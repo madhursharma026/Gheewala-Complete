@@ -1,0 +1,369 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+body {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.cart-value {
+  padding-left: 9px;
+  padding-right: 9px;
+  border-radius: 100%;
+}
+
+.cart-value-warning[href] {
+  background-color: #c67605;
+}
+
+#cart-value-id {
+  font-size: 12px;
+  background: #404040;
+  color: #fff;
+  padding: 0px 5px;
+  vertical-align: top;
+  margin-left: -5px;
+}
+
+.header_options_after_xl_scrn {
+  display: none;
+}
+
+.header_options_before_xl_scrn {
+  height: 70px;
+}
+
+.header_bg {
+  background: white;
+}
+
+.option_after_md_scrn {
+  display: none;
+}
+
+.product_card {
+  transition: all 250ms linear;
+}
+
+.BelieveCardBeforeMDScrn {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.believe_car_after_md_scrn {
+  display: none;
+}
+
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='black' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+}
+
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='black' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+}
+
+.add_to_cart_email {
+  margin-left: 80px;
+}
+
+.dashboard_data_after_md_srcn {
+  display: none;
+}
+
+.carosul-card {
+  padding: 50px 85px !important;
+}
+
+.form-control:focus,
+.btn:focus {
+  box-shadow: none !important;
+}
+
+.card-shadow {
+  transition: all 250ms linear;
+  border-radius: 6px;
+  padding: 12px 4px;
+  display: flex;
+  justify-content: space-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-bg-icon {
+  width: 50px;
+  height: 50px;
+  color: #fff;
+  padding: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a3556;
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: #000 !important;
+}
+
+.step-arrow {
+  position: absolute;
+  top: 35%;
+  right: -10%;
+}
+
+.login-screen {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-screen > div {
+  max-width: 450px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  padding: 25px 35px;
+}
+
+.yt-video iframe {
+  width: 70%;
+  height: 450px;
+}
+
+.main-layout {
+  overflow-x: hidden !important;
+  width: 100vw;
+}
+
+.header_image {
+  background-image: url(../images/VEDIC\ BILONA\ GHEE.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 75%;
+  background-position-x: right;
+}
+
+/* m-1.5 py-2.5 px-5 rounded-full bg-[#FFD644] border-[#FFD644] border-2 text-yellow-700 font-semibold uppercase  */
+
+.primary-button {
+  @apply rounded-md border-2 border-[#ffe74d] bg-[#ffe74d] text-[#28341E] font-semibold py-2 px-5 shadow outline-none hover:bg-[#ffe32a]  active:bg-[#ffe013] uppercase;
+}
+.secondary-button {
+  @apply rounded-full border-2 border-[#ffe74d] text-[#ffe74d] font-semibold py-2 px-5 shadow outline-none hover:bg-[#ffe74d] hover:text-[#28341E]  active:bg-[#ffe013] uppercase;
+}
+
+@media (max-width: 1199px) {
+  .header_options_before_xl_scrn {
+    display: none;
+  }
+
+  .header_options_after_xl_scrn {
+    display: block;
+    /* height: 70px; */
+  }
+
+  .header_bg {
+    background: #000;
+  }
+}
+
+@media (max-width: 767px) {
+  .option_after_md_scrn {
+    display: block;
+  }
+
+  .option_before_md_scrn {
+    display: none;
+  }
+
+  .believe_car_after_md_scrn {
+    display: block;
+  }
+
+  .believe_car_before_md_scrn {
+    display: none;
+  }
+
+  .dashboard_data_before_md_srcn {
+    display: none;
+  }
+
+  .dashboard_data_after_md_srcn {
+    display: block;
+  }
+
+  .header-links span {
+    font-size: 14px;
+  }
+
+  .product_card {
+    /* border: 1px solid lightgray;
+    margin-bottom: 8px; */
+  }
+
+  .header-links span {
+    font-size: 14px;
+  }
+
+  .product_card {
+    margin-bottom: 8px;
+    border-radius: 0;
+  }
+
+  .content p {
+    font-size: 14px;
+  }
+
+  .content h5 {
+    text-decoration: underline;
+    text-transform: uppercase !important;
+  }
+
+  .carosul-card {
+    padding: 25px 40px !important;
+  }
+
+  .carosul-card h4 {
+    font-size: 16px !important;
+  }
+
+  .carosul-card h5 {
+    font-size: 18px !important;
+    margin: 0;
+  }
+
+  .carosul-card h6 {
+    font-size: 12px !important;
+  }
+
+  .accordion-item {
+    margin-bottom: 8px !important;
+  }
+
+  .accordion-button {
+    padding: 0 8px !important;
+  }
+
+  .accordion-button p {
+    font-size: 16px !important;
+    padding: 8px 0 !important;
+  }
+
+  .perks-cards {
+    padding: 12px;
+  }
+
+  .perks-cards div {
+    padding: 6px !important;
+  }
+
+  .perks-cards h4 {
+    font-size: 16px !important;
+  }
+
+  .perks-cards p {
+    font-size: 12px !important;
+  }
+
+  .footer-links a {
+    font-size: 14px;
+  }
+
+  .yt-video iframe {
+    width: 100%;
+    height: 350px;
+  }
+}
+
+.main_heading {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+.sub_heading {
+  font-size: 16px;
+  font-family: "ProximaNovaRegular";
+  font-weight: 600;
+}
+
+.sub_para {
+  font-size: 14px;
+  margin-top: 14px;
+}
+
+@media (min-width: 768px) {
+  .main_heading {
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+  }
+
+  .sub_heading {
+    font-size: 24px;
+    font-family: "ProximaNovaRegular";
+    font-weight: 600;
+  }
+
+  .sub_para {
+    font-size: 18px;
+  }
+}
+
+/* .progress{
+    max-width: 200px;
+} */
+@media (max-width: 991px) {
+  .verified_lawyer {
+    text-align: left;
+  }
+
+  .write_a_review_btn {
+    width: 100%;
+  }
+
+  .progress {
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .verified_lawyer {
+    text-align: right;
+  }
+}
+
+@media (hover: hover) {
+  .custom-btn:hover {
+    opacity: 0.8 !important;
+  }
+
+  .card-shadow:hover {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+}
+
+.admin-screen {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-screen > div {
+  max-width: 450px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  padding: 25px 35px;
+}
