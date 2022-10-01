@@ -141,7 +141,7 @@ function CustomerControls() {
             {loading ?
                 <>
                     <div className="mt-3">
-                        <h1 style={{ fontSize: "1.5rem" }} className='mb-3 text-center'><u><b>All Order</b></u></h1>
+                        <h1 style={{ fontSize: "1.5rem" }} className='mb-3 text-center'><u><b>All Customers</b></u></h1>
                         <table class="table">
                             <thead>
                                 <tr>

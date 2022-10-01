@@ -21,6 +21,8 @@ function NewProductPageTwo() {
   const CowGhee = useSelector(state => state.CowGhee)
   const BuffaloGhee = useSelector((state) => state.BuffaloGhee);
   const gettingUserDetails = useSelector(state => state.UserDetail)
+  const [item, setItem] = React.useState([])
+  const [item2, setItem2] = React.useState([])
 
   {
       React.useEffect(() => {
@@ -38,6 +40,19 @@ function NewProductPageTwo() {
     }, [])
   }
 
+  {
+    React.useEffect(() => {
+      fetch(`http://127.0.0.1:5000/product`).then((result) => {
+        result.json().then((resp) => {
+          setItem(resp[1])
+          setItem2(resp[0])
+          // dispatch(HomepageDataSave(resp))
+        })
+      })
+    }, [])
+  }
+
+
   return (
     <div className="px-10 md:px-28 bg-[#6F8D56] py-4 text-white">
       <div className="row mt-24">
@@ -51,7 +66,7 @@ function NewProductPageTwo() {
               <div class="carousel-item active">
                 <div className="px-5">
                   <img
-                    src={product1}
+                    src={`http://localhost:5000/public/${item2.ProductImage}`}
                     class="d-block w-100"
                     alt="#ImgNotFound"
                   />
@@ -60,7 +75,7 @@ function NewProductPageTwo() {
               <div class="carousel-item">
                 <div className="px-5">
                   <img
-                    src={product1}
+                    src={`http://localhost:5000/public/${item2.ProductImage}`}
                     class="d-block w-100"
                     alt="#ImgNotFound"
                   />
@@ -69,7 +84,7 @@ function NewProductPageTwo() {
               <div class="carousel-item">
                 <div className="px-5">
                   <img
-                    src={product1}
+                    src={`http://localhost:5000/public/${item2.ProductImage}`}
                     class="d-block w-100"
                     alt="#ImgNotFound"
                   />
@@ -78,7 +93,7 @@ function NewProductPageTwo() {
               <div class="carousel-item">
                 <div className="px-5">
                   <img
-                    src={product1}
+                    src={`http://localhost:5000/public/${item2.ProductImage}`}
                     class="d-block w-100"
                     alt="#ImgNotFound"
                   />
@@ -87,7 +102,7 @@ function NewProductPageTwo() {
               <div class="carousel-item">
                 <div className="px-5">
                   <img
-                    src={product1}
+                    src={`http://localhost:5000/public/${item2.ProductImage}`}
                     class="d-block w-100"
                     alt="#ImgNotFound"
                   />
@@ -122,12 +137,12 @@ function NewProductPageTwo() {
         </div>
         <div className="col-lg-6 px-3 pt-3">
           <h3 className="text-2xl md:text-3xl font-semibold">
-            Pure Buffalo Ghee
+          {item2.Title}
           </h3>
           <div className="row py-1">
             <div className="col">
               <Link to="/" className="text-[#ffe74d] hover:text-[#ffe74d]">
-                Pure Desi Cow Ghee
+              {item2.Title}
               </Link>
               &nbsp;
             </div>
@@ -143,8 +158,7 @@ function NewProductPageTwo() {
             </div>
           </div>
           <p className="pt-2 text-white text-lg font-medium">
-            Delicious ghee ethically prepared from enzyme-rich yoghurt of pure
-            breed Buffalo Ghee
+          {item2.ShortDescription}
           </p>
           <div className="mt-2">
             <h6 className="m-0 text-[#28341E]">Buying Options</h6>
@@ -187,7 +201,7 @@ function NewProductPageTwo() {
           <div className="mt-5" style={{ maxWidth: "600px" }}>
             <div className="d-flex flex-col md:flex-row justify-content-start mb-3">
               <h5 className="fw-bold m-0 text-2xl md:text-3xl mb-4 pr-3 text-left">
-                &nbsp;₹ 650
+                &nbsp;₹ {item2.Price}
               </h5>
               <div className="d-flex mb-4 align-items-center justify-content-start gap-3 ms-auto">
                 {BuffaloGhee >= 1 ? (
@@ -496,27 +510,7 @@ function NewProductPageTwo() {
           <b>Know Your Ghee</b>
         </h2>
         <p className="mb-5">
-          Buffalo Ghee is a healthy fat that contains Omega-3 and 6, along with
-          other vitamins like A, D and K. It is absorbed in the same rate as
-          carbs or sugars (and hence does not make you gain weight) just like
-          coconut oil yet it helps in maintaining strong appetites by secreting
-          gastric acid. Ghee also protects your brain from neurological
-          disorders including Alzheimer's disease and dementia which makes it an
-          all-around essential food for everyday living
-        </p>
-        <p>
-          Buffalo Ghee is given to children from the first food after mother's
-          milk. It has a neutralising effect on the stomach acid and makes it
-          easier for them to digest other foods as they grow up. This way,
-          buffalo ghee helps kids maintain their health and nutrition throughout
-          their lives by adding nutrients that come from grass-fed bison without
-          using any machinery or additives! At Ghee Wala, we offer pure organic
-          buffalo ghee with no adulterants at all! Our original Buffalo Ghee
-          comes from small family farms in our village using traditional methods
-          such as hand grinding of spices instead of industrial production
-          machines. The freshness of real Indian Buffalo Ghee will make anyone
-          mesmerised with its taste - even adults who have grown accustomed to
-          commercial products!!
+        {item2.LongDescription}
         </p>
       </div>
       <div className="text-center my-5">
@@ -945,7 +939,7 @@ function NewProductPageTwo() {
                 <div class="carousel-item active">
                   <div className="px-5">
                     <img
-                      src={product1}
+                    src={`http://localhost:5000/public/${item.ProductImage}`}
                       class="d-block w-100"
                       alt="#ImgNotFound"
                     />
@@ -954,7 +948,7 @@ function NewProductPageTwo() {
                 <div class="carousel-item">
                   <div className="px-5">
                     <img
-                      src={product1}
+                    src={`http://localhost:5000/public/${item.ProductImage}`}
                       class="d-block w-100"
                       alt="#ImgNotFound"
                     />
@@ -963,7 +957,7 @@ function NewProductPageTwo() {
                 <div class="carousel-item">
                   <div className="px-5">
                     <img
-                      src={product1}
+                    src={`http://localhost:5000/public/${item.ProductImage}`}
                       class="d-block w-100"
                       alt="#ImgNotFound"
                     />
@@ -972,7 +966,7 @@ function NewProductPageTwo() {
                 <div class="carousel-item">
                   <div className="px-5">
                     <img
-                      src={product1}
+                    src={`http://localhost:5000/public/${item.ProductImage}`}
                       class="d-block w-100"
                       alt="#ImgNotFound"
                     />
@@ -981,7 +975,7 @@ function NewProductPageTwo() {
                 <div class="carousel-item">
                   <div className="px-5">
                     <img
-                      src={product1}
+                    src={`http://localhost:5000/public/${item.ProductImage}`}
                       class="d-block w-100"
                       alt="#ImgNotFound"
                     />
@@ -1016,12 +1010,12 @@ function NewProductPageTwo() {
           </div>
           <div className="col-lg-6 px-3 pt-3">
             <h3 className="text-2xl md:text-3xl font-semibold">
-              Pure Desi Cow Ghee
+            {item.Title}
             </h3>
             <div className="row py-1">
               <div className="col">
                 <Link to="/" className="text-[#ffe74d] hover:text-[#ffe74d]">
-                  Pure Buffalo Ghee
+                {item.Title}
                 </Link>
                 &nbsp;
               </div>
@@ -1037,8 +1031,7 @@ function NewProductPageTwo() {
               </div>
             </div>
             <p className="pt-2 text-white text-lg font-medium">
-              Delicious ghee ethically prepared from enzyme-rich yoghurt of pure
-              breed Desi Cows
+            {item.ShortDescription}
             </p>
             <div className="mt-2">
               <h6 className="m-0 text-[#28341E]">Buying Options</h6>
@@ -1081,7 +1074,7 @@ function NewProductPageTwo() {
             <div className="mt-5" style={{ maxWidth: "600px" }}>
               <div className="d-flex flex-col md:flex-row justify-content-start mb-3">
                 <h5 className="fw-bold m-0 text-2xl md:text-3xl mb-4 pr-3 text-left">
-                  &nbsp;₹ 650
+                  &nbsp;₹ {item.Price}
                 </h5>
                 <div className="d-flex mb-4 align-items-center justify-content-start gap-3 ms-auto">
                   {CowGhee >= 1 ? (

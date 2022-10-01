@@ -27,6 +27,8 @@ import EditCategory from "./pages/AdminControlsComponent/EditCategory";
 import AddCategory from "./pages/AdminControlsComponent/AddCategory";
 import AddProduct from "./pages/AdminControlsComponent/AddProduct";
 import EditProduct from "./pages/AdminControlsComponent/EditProduct";
+import Admin2 from "./pages/Admin2";
+import AdminControls2 from "./pages/AdminControls2";
 // import ResetPassword from "../../ecommerce/src/pages/DashBoardComponent/ResetPassword";
 // import EditProfile from "../../ecommerce/src/pages/DashBoardComponent/EditProfile";
 
@@ -36,7 +38,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route
-            path="/admin_page"
+            path="/admin_page2"
             element={
               <>
                 <Admin />
@@ -44,14 +46,23 @@ function App() {
               </>
             }
           />
-          <Route path="/adminControls/category_details" element={<><AdminControls x={<CategoryControls />} /><title>Admin Dashboard- Category Controls</title></>} />
-          <Route path="/adminControls/add_category" element={<><AdminControls x={<AddCategory />} /><title>Admin Dashboard- Add Category Controls</title></>} />
-          <Route path="/adminControls/category_details/edit/:id" element={<><AdminControls x={<EditCategory />} /><title>Admin Dashboard- Edit Category Controls</title></>} />
-          <Route path="/adminControls/product_details" element={<><AdminControls x={<ProductControls />} /><title>Admin Dashboard- Product Controls</title></>} />
-          <Route path="/adminControls/add_product" element={<><AdminControls x={<AddProduct />} /><title>Admin Dashboard- Add Product Controls</title></>} />
-          <Route path="/adminControls/product_details/edit/:id" element={<><AdminControls x={<EditProduct />} /><title>Admin Dashboard- Edit Product Controls</title></>} />
-          <Route path="/adminControls/customer_details" element={<><AdminControls x={<CustomerControls />} /><title>Admin Dashboard- Customer Controls</title></>} />
-          <Route path="/adminControls/order_details" element={<><AdminControls x={<OrderControls />} /><title>Admin Dashboard- Order Controls</title></>} />
+          <Route
+            path="/admin_page"
+            element={
+              <>
+                <Admin2 />
+                <title>Admin Page</title>
+              </>
+            }
+          />
+          <Route path="/adminControls/category_details" element={<><AdminControls2 x={<CategoryControls />} /><title>Admin Dashboard- Category Controls</title></>} />
+          <Route path="/adminControls/add_category" element={<><AdminControls2 x={<AddCategory />} /><title>Admin Dashboard- Add Category Controls</title></>} />
+          <Route path="/adminControls/category_details/edit/:id" element={<><AdminControls2 x={<EditCategory />} /><title>Admin Dashboard- Edit Category Controls</title></>} />
+          <Route path="/adminControls/product_details" element={<><AdminControls2 x={<ProductControls />} /><title>Admin Dashboard- Product Controls</title></>} />
+          <Route path="/adminControls/add_product" element={<><AdminControls2 x={<AddProduct />} /><title>Admin Dashboard- Add Product Controls</title></>} />
+          <Route path="/adminControls/product_details/edit/:id" element={<><AdminControls2 x={<EditProduct />} /><title>Admin Dashboard- Edit Product Controls</title></>} />
+          <Route path="/adminControls/customer_details" element={<><AdminControls2 x={<CustomerControls />} /><title>Admin Dashboard- Customer Controls</title></>} />
+          <Route path="/adminControls/order_details" element={<><AdminControls2 x={<OrderControls />} /><title>Admin Dashboard- Order Controls</title></>} />
           <Route
             index
             element={

@@ -9,6 +9,7 @@ function AddProduct() {
     const [open, setOpen] = useState(false);
     const [Inventory, setInventory] = useState("")
     const [Title, setTitle] = useState("")
+    const [Price, setPrice] = useState("")
     const [ProductImage, setProductImage] = useState("")
     const [LongDescription, setLongDescription] = useState("")
     const [ShortDescription, setShortDescription] = useState("")
@@ -33,6 +34,7 @@ function AddProduct() {
         let formdata = new FormData();
         formdata.append("Inventory", Inventory);
         formdata.append("Title", Title);
+        formdata.append("Price", Price);
         formdata.append("ProductImage", ProductImage);
         formdata.append("LongDescription", LongDescription);
         formdata.append("ShortDescription", ShortDescription);
@@ -49,6 +51,7 @@ function AddProduct() {
             setAlertMessage("Product Added Successfully")
             setInventory("")
             setTitle("")
+            setPrice("")
             setProductImage("")
             setLongDescription("")
             setShortDescription("")
@@ -58,6 +61,7 @@ function AddProduct() {
             setAlertMessage("Something Went Wrong")
             setInventory("")
             setTitle("")
+            setPrice("")
             setProductImage("")
             setLongDescription("")
             setShortDescription("")
@@ -88,6 +92,9 @@ function AddProduct() {
             <form onSubmit={(e) => submitAddProduct(e)}>
                 <label for="Title" className="form-label mt-3">Title</label>
                 <input type="text" className="form-control" id="Title" value={Title} onChange={(e) => setTitle(e.target.value)} required style={{ width: "100%", fontSize: "18px" }} />
+
+                <label for="Price" className="form-label mt-3">Price</label>
+                <input type="number" className="form-control" id="Price" value={Price} onChange={(e) => setPrice(e.target.value)} required style={{ width: "100%", fontSize: "18px" }} />
 
                 <label for="ProductImage" className="form-label mt-3">Product Image</label>
                 <input type="file" className="form-control" id="ProductImage" onChange={(e) => setProductImage(e.target.files[0])} accept="image/png, image/gif, image/jpeg" required style={{ width: "100%", fontSize: "18px" }} />

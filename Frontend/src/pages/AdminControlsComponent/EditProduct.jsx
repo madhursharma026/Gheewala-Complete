@@ -17,6 +17,7 @@ function EditProduct() {
     const productId = localStorage.getItem("productId")
     const [Inventory, setInventory] = useState("")
     const [Title, setTitle] = useState("")
+    const [Price, setPrice] = useState("")
     const [ProductImage, setProductImage] = useState("")
     const [LongDescription, setLongDescription] = useState("")
     const [ShortDescription, setShortDescription] = useState("")
@@ -47,6 +48,7 @@ function EditProduct() {
                     // setCategoryImage(resp[0].CategoryImage)
                     setInventory(resp[0].Inventory)
                     setTitle(resp[0].Title)
+                    setPrice(resp[0].Price)
                     setProductImage(resp[0].ProductImage)
                     setLongDescription(resp[0].LongDescription)
                     setShortDescription(resp[0].ShortDescription)
@@ -61,6 +63,7 @@ function EditProduct() {
         let formdata = new FormData();
         formdata.append("Inventory", Inventory);
         formdata.append("Title", Title);
+        formdata.append("Price", Price);
         formdata.append("ProductImage", ProductImage);
         formdata.append("LongDescription", LongDescription);
         formdata.append("ShortDescription", ShortDescription);
@@ -95,6 +98,9 @@ function EditProduct() {
             <form onSubmit={(e) => submitEditForm(e)}>
                 <label for="Title" className="form-label mt-3">Title</label>
                 <input type="text" className="form-control" id="Title" defaultValue={Title} onChange={(e) => setTitle(e.target.value)} style={{ width: "100%", fontSize: "18px" }} />
+
+                <label for="Price" className="form-label mt-3">Price</label>
+                <input type="number" className="form-control" id="Price" defaultValue={Price} onChange={(e) => setPrice(e.target.value)} required style={{ width: "100%", fontSize: "18px" }} />
 
                 <label for="ProductImage" className="form-label mt-3">Product Image</label>
                 <input type="file" className="form-control" id="ProductImage" onChange={(e) => setProductImage(e.target.files[0])} accept="image/png, image/gif, image/jpeg" style={{ width: "100%", fontSize: "18px" }} />
