@@ -41,4 +41,16 @@ export class OrderService {
       relations: ['product']
     });
   }
+  
+  findPendingOrders() {
+    return this.repo.find({
+      where: { DeliveryStatus: 'pending' }
+    });
+  }
+  
+  findDeliveredOrders() {
+    return this.repo.find({
+      where: { DeliveryStatus: 'delivered' }
+    });
+  }
 }

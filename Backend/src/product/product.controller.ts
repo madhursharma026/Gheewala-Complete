@@ -12,7 +12,7 @@ export class ProductController {
   @UseInterceptors(FileInterceptor('ProductImage'))
   async createCategory(@Body() body: CreateProductDto, @UploadedFile() ProductImage: Express.Multer.File, @Param('categoryId') categoryId: string) {
     if ((ProductImage.mimetype === "image/jpeg") || (ProductImage.mimetype === "image/jpg") || (ProductImage.mimetype === "image/png")) {
-      const newProduct = await this.productService.create(body.Title, ProductImage.filename, body.ShortDescription, body.LongDescription, body.Inventory, +categoryId);
+      const newProduct = await this.productService.create(body.Title, ProductImage.filename, body.ShortDescription, body.LongDescription, body.Inventory, body.Price, +categoryId);
       return newProduct;
     } else {
       throw new NotFoundException('Only Image Files are allowed!');
@@ -34,10 +34,10 @@ export class ProductController {
     //   throw new NotFoundException('Only Image Files are allowed!');
     // }
     if (ProductImage === undefined) {
-      const updatedCategory = await this.productService.update(+id, body.Title, body.ProductImage, body.ShortDescription, body.LongDescription, body.Inventory);
+      const updatedCategory = await this.productService.update(+id, body.Title, body.ProductImage, body.ShortDescription, body.LongDescription, body.Inventory, body.Price);
       return updatedCategory;
     } else {
-      const updatedCategory = await this.productService.update(+id, body.Title, ProductImage.filename, body.ShortDescription, body.LongDescription, body.Inventory);
+      const updatedCategory = await this.productService.update(+id, body.Title, ProductImage.filename, body.ShortDescription, body.LongDescription, body.Inventory, body.Price);
       return updatedCategory;
     }
   }

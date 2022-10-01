@@ -28,4 +28,14 @@ export class OrderController {
   findOrderOfSingleUser(@Param('userId') userId: number) {
     return this.orderService.findOrderOfSingleUser(+userId);
   }
+
+  @Get('/pending')
+  findPendingOrders() {
+    return this.orderService.findPendingOrders();
+  }
+
+  @Get('/delivered')
+  findDeliveredOrders() {
+    return this.orderService.findPendingOrders();
+  }
 }

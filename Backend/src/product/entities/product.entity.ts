@@ -22,6 +22,9 @@ export class Product {
     @Column({ nullable: false })
     Inventory: string;
 
+    @Column({ nullable: false })
+    Price: number;
+
     @ManyToOne(() => Category, (category) => category.products)
     category: Category
 

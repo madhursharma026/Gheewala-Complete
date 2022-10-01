@@ -37,6 +37,16 @@ export class AuthController {
     return this.usersService.findAll();
   }
 
+  @Get('/allUsers')
+  findAllUsers() {
+    return this.usersService.findAllUsers();
+  }
+
+  @Get('/allAdmin')
+  findAllAdmin() {
+    return this.usersService.findAllAdmin();
+  }
+
   @Get("/user_profile/:userId")
   findSingleUserDetails(@Param('userId') userId: number) {
     return this.usersService.findSingleUserDetails(+userId);

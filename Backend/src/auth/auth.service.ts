@@ -64,6 +64,14 @@ export class AuthService {
   findAll(): Promise<User[]> {
     return this.userRepository.find();
   }
+
+  findAllUsers(): Promise<User[]> {
+    return this.userRepository.find({where: {role: 'user'}});
+  }
+
+  findAllAdmin(): Promise<User[]> {
+    return this.userRepository.find({where: {role: 'admin'}});
+  }
   
   findSingleUserDetails(userId: number) {
     if (!userId) {
