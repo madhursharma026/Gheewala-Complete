@@ -23,7 +23,7 @@ export default function Header() {
 
   function LogoutUser() {
     dispatch(Logout())
-    navigate("/login")
+    navigate("/")
   }
 
   return (
@@ -88,6 +88,7 @@ export default function Header() {
             {/* <HiUserCircle className="h-10 w-10 text-white" /> */}
             {
               (gettingUserDetails.length !== 0) ?
+              <>
                 <Dropdown>
                   <Dropdown.Toggle id="dropdown-basic" style={{ background: "transparent", border: "0", color: "white", fontSize: "14px" }}>
                     <b className="text-center">
@@ -110,11 +111,12 @@ export default function Header() {
                     }
                   </Dropdown.Menu>
                 </Dropdown>
+                </>
                 :
                 <Link class="nav-link text-dark px-3" to="/login" style={{ fontSize: "14px" }}>
-                  <b>
+                  <b className="text-white">
                     <div className="text-center">
-                      <HiUserCircle className="h-10 w-10 text-white" /><br />
+                    <HiUserCircle className="h-10 w-10 text-white" />
                     </div>
                     Login
                   </b>

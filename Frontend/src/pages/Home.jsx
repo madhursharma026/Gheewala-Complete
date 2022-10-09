@@ -20,19 +20,21 @@ function Home() {
   const [item, setItem] = React.useState([])
   const [item2, setItem2] = React.useState([])
 
-  {
-    React.useEffect(() => {
-      if (gettingUserDetails.length === 0) {
-        navigate("/login")
-      }
-    })
-  }
+  // {
+  //   React.useEffect(() => {
+  //     if (gettingUserDetails.length === 0) {
+  //       navigate("/login")
+  //     }
+  //   })
+  // }
 
   {
     React.useEffect(() => {
+      if (gettingUserDetails.length >= 1) {
       if (gettingUserDetails[0].role === "admin") {
         navigate("/admin_page")
       }
+    }
     }, [])
   }
 

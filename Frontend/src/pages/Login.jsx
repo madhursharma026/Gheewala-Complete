@@ -3,7 +3,6 @@ import { Alert } from '@mui/material';
 import { Link } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
 import { useNavigate } from "react-router-dom";
-import headerLogo from '../content/images/logo.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { SaveLoginDetails } from "../Redux/UpdatedEcommerceReducer";
 
@@ -41,7 +40,7 @@ function Login() {
     } else {
       setTimeout(() => (navigate('/')), 2000);
     }
-    
+
   };
 
   const handleClose = (reason) => {
@@ -79,7 +78,6 @@ function Login() {
       handleClick()
     }
   }
-
 
   return (
     <>

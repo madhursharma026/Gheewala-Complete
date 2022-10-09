@@ -25,18 +25,20 @@ const AddToCart = () => {
         dispatch(CheckoutDone())
     }
 
-    {
-        React.useEffect(() => {
-            if (gettingUserDetails.length === 0) {
-                navigate("/login")
-            }
-        })
-    }
+    // {
+    //     React.useEffect(() => {
+    //         if (gettingUserDetails.length === 0) {
+    //             navigate("/login")
+    //         }
+    //     })
+    // }
 
     {
         React.useEffect(() => {
-            if (gettingUserDetails[0].role === "admin") {
-                navigate("/admin_page")
+            if (gettingUserDetails.length >= 1) {
+                if (gettingUserDetails[0].role === "admin") {
+                    navigate("/admin_page")
+                }
             }
         }, [])
     }
@@ -53,57 +55,108 @@ const AddToCart = () => {
         setOpen(false);
     };
 
+    const loadScript = (src) => {
+        return new Promise((resolve) => {
+            const script = document.createElement('script')
+            script.src = src
+            script.onload = () => {
+                resolve(true)
+            }
+
+            script.onerror = () => {
+                resolve(false)
+            }
+
+            document.body.appendChild(script)
+        })
+    }
+
+    const displayRazorpay = async (amount) => {
+        const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
+
+        if (!res) {
+            alert("You are offline... Failed to load Razorpay SDK")
+            return
+        }
+
+        const options = {
+            key: 'rzp_test_epbuUkrs3QVwte',
+            currency: 'INR',
+            amount: amount * 100,
+            name: gettingUserDetails[0].name,
+            description: "Thanks for Purchasing",
+            image: 'http://localhost:3000/static/media/logo.feabe944101600d0679d.png',
+            handler: function (response) {
+                // alert(response.razorpay_payment_id)
+                handleClick()
+            },
+            prefill: {
+                name: gettingUserDetails[0].name,
+                email: gettingUserDetails[0].email,
+                contact: gettingUserDetails[0].phone_muner,
+            }
+        }
+
+        const paymentOption = new window.Razorpay(options)
+        paymentOption.open()
+    }
+
     async function placeOrderSubmit() {
-        let userId = gettingUserDetails[0].userId
-        if (BuffaloGheeQty >= 1) {
-            let productId = (item.id)
-            let Qty = BuffaloGheeQty
-            let data = { Qty }
-            let result = await fetch(`http://localhost:5000/order/place_order/userId=${userId}/productId=${productId}`, {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
+        if (gettingUserDetails.length === 0) {
+            navigate("/login")
+        } else {
+            let userId = gettingUserDetails[0].userId
+            if (BuffaloGheeQty >= 1) {
+                let productId = (item.id)
+                let Qty = BuffaloGheeQty
+                let data = { Qty }
+                let result = await fetch(`http://localhost:5000/order/place_order/userId=${userId}/productId=${productId}`, {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    }
+                })
+                let output = ""
+                output = await result.json()
+                if (output.Qty === BuffaloGheeQty) {
+                    setAlertMessageBg("success")
+                    setAlertMessage("Order placed!!!")
+                    // handleClick()
+                } else {
+                    setAlertMessageBg("danger")
+                    setAlertMessage(output.message)
+                    // handleClick()
                 }
-            })
-            let output = ""
-            output = await result.json()
-            if (output.Qty === BuffaloGheeQty) {
-                setAlertMessageBg("success")
-                setAlertMessage("Order placed!!!")
-                // handleClick()
-            } else {
-                setAlertMessageBg("danger")
-                setAlertMessage(output.message)
-                // handleClick()
             }
-        }
-        if (CowGheeQty >= 1) {
-            let productId = (item2.id)
-            let Qty = CowGheeQty
-            let data = { Qty }
-            let result = await fetch(`http://localhost:5000/order/place_order/userId=${userId}/productId=${productId}`, {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
+            if (CowGheeQty >= 1) {
+                let productId = (item2.id)
+                let Qty = CowGheeQty
+                let data = { Qty }
+                let result = await fetch(`http://localhost:5000/order/place_order/userId=${userId}/productId=${productId}`, {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    }
+                })
+                let output = ""
+                output = await result.json()
+                if (output.Qty === CowGheeQty) {
+                    setAlertMessageBg("success")
+                    setAlertMessage("Order placed!!!")
+                    // handleClick()
+                } else {
+                    setAlertMessageBg("danger")
+                    setAlertMessage(output.message)
+                    // handleClick()
                 }
-            })
-            let output = ""
-            output = await result.json()
-            if (output.Qty === CowGheeQty) {
-                setAlertMessageBg("success")
-                setAlertMessage("Order placed!!!")
-                // handleClick()
-            } else {
-                setAlertMessageBg("danger")
-                setAlertMessage(output.message)
-                // handleClick()
             }
+            displayRazorpay((item.Price * BuffaloGheeQty) + (item2.Price * CowGheeQty))
+            // handleClick()
         }
-        handleClick()
     }
 
     {
